@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NETSIBKM2_WebApp.Context;
+using NETSIBKM2_WebApp.Handler;
 using NETSIBKM2_WebApp.Repositories.Data;
 using NETSIBKM2_WebApp.Repositories.Interface;
 using System;
@@ -32,6 +33,9 @@ namespace NETSIBKM2_WebApp
             // dependence injection
             services.AddScoped<ProvinceRepository>();
             services.AddScoped<AccountRepository>();
+
+            //services.AddScoped<Hashing>();
+            
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);

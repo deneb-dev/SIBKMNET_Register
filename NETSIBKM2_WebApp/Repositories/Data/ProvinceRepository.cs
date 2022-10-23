@@ -30,7 +30,7 @@ namespace NETSIBKM2_WebApp.Repositories.Data
             return data;
         }
 
-        public Province Get(int id)
+        public Province Get(int id, Province province)
         {
             var data = myContext.Provinces.Include(x => x.Region).Where(x => x.Id.Equals(id)).FirstOrDefault();
             return data;
@@ -46,9 +46,10 @@ namespace NETSIBKM2_WebApp.Repositories.Data
 
         public int Put(int id,Province province)
         {
-            var data = myContext.Provinces.Find(id);
+            var data = myContext.Provinces.Find(id, province);
             data.Name = province.Name;
             data.RegionId = province.RegionId;
+            //myContext.Provinces.Update(data);
             myContext.Provinces.Update(data);
             var result = myContext.SaveChanges();
             return result;

@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 namespace NETSIBKM2_WebApp.Repositories.Interface
 {
     interface IProvinceRepository
-    {
-
-        
+    {   
         List<Province> Get();
 
-        Province Get(int id);
+        Province Get( int id ,Province province);
 
         
         int Post(Province province);

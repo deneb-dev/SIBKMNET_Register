@@ -25,7 +25,7 @@ namespace NETSIBKM2_WebApp.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public IActionResult Login(Login login)
         {
             //statement mengambil data dari database sesuai dengan email dan password {}
@@ -42,6 +42,23 @@ namespace NETSIBKM2_WebApp.Controllers
         }
 
         //Register
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(Register register)
+        {
+            var data = accountRepository.Register(register);
+            if(data > 0)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            return View();
+        }
+            
+
         //Change Pasword
         //Forgot Pasword
     }

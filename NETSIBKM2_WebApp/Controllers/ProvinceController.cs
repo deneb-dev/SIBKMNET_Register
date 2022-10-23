@@ -28,15 +28,15 @@ namespace NETSIBKM2_WebApp.Controllers
                 var data = ProvinceRepository.Get();
                 return View(data);
             }
-            return RedirectToAction("Unauthorized", "ErrorPage");
+            return RedirectToAction("Unauthorized", "ErrorPageController");
         }
 
         // GET BY ID
         // GET
-        public IActionResult Details(int id)
+        public IActionResult Details(int id, Province province)
         {
             //var data = myContext.Provinces.Find(id);
-            var data = ProvinceRepository.Get(id);
+            var data = ProvinceRepository.Get(id, province);
             return View(data);
 
         }
@@ -66,7 +66,7 @@ namespace NETSIBKM2_WebApp.Controllers
 
         // Edit
         // GET
-        public IActionResult Update(int id)
+        public IActionResult Update()
         {
             return View();
 
